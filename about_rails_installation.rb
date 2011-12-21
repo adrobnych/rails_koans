@@ -49,6 +49,6 @@ class AboutRailsInstallation < EdgeCase::Koan
   
   # we'll use rails 3 for the following tests
   def test_rails_platform
-    assert_equal "3", `rails --version`[/\d+/]
+    assert `rails --version`[/\d+/] == "3"
   end
 end
