@@ -5,7 +5,7 @@ require File.expand_path(File.dirname(__FILE__) + '/edgecase')
 
 class AboutCeationRailsApp < EdgeCase::Koan
 
-  # execute "rails new firstapp" inside rails_koans directory
+  # execute "rails new firstapp" inside parent directory of rails_koans directory
   # and check if firstapp directory was created
   def test_rails_new_app
     rails_app_directory = Dir.open("firstapp")
