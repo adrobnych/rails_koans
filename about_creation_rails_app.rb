@@ -25,8 +25,18 @@ class AboutCeationRailsApp < EdgeCase::Koan
   # check rails root subdirectories
   def test_rails_subdirectories
     rails_app_directory = Dir.open("firstapp")
-    assert_equal ___,
+    assert_equal  [".",   "..",   "app",   "config",   "db",
+                   "doc",   "lib",   "log",   "public",
+                   "script",   "test",   "tmp",   "vendor"],
                 rails_app_directory.entries.select {|e| File.directory? "firstapp/#{e}"}
   end
-   
+  
+  # check git initialization
+  # you should execute "git init" inside rails app root
+  def test_git_init
+    system "cd firstapp"
+    git_result = `git status`
+    system "cd .."
+    assert_equal ___, git_result
+  end
 end
