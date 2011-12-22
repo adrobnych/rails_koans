@@ -12,6 +12,10 @@ class AboutBundler < EdgeCase::Koan
   end
   
   # you must have rails gem in Gemfile
+  def test_rails_gem_presence_in_gemfile
+    
+    
+  end
   
   # you must have sqlite gem in Gemfile
   
