@@ -70,6 +70,14 @@ class String
   end
 end
 
+def in_external_dir(relative_dir_name)
+    koans_dir = Dir.pwd                               # rework using sandwich
+    Dir.chdir relative_dir_name
+    yield
+  ensure
+    Dir.chdir koans_dir
+end
+
 module EdgeCase
   class << self
     def simple_output

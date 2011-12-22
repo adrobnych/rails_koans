@@ -23,20 +23,16 @@ class AboutBundler < EdgeCase::Koan
   
   # check if you installed rails 3 gem using bundler
   def test_rails3_gem_installation
-    koans_dir = Dir.pwd                               # rework using sandwich
-    Dir.chdir "../firstapp"
-    bundle_result = `bundle show rails`
-    Dir.chdir koans_dir
-    assert_equal "rails-3.", bundle_result[/rails-3./]
+    in_external_dir("../firstapp") do
+      assert_equal "rails-3.", `bundle show rails`[/rails-3./]
+    end
   end
  
   # check if you installed sqilite3 gem using bundler
   def test_sqlite3_gem_installation
-    koans_dir = Dir.pwd                               # rework using sandwich
-    Dir.chdir "../firstapp"
-    bundle_result = `bundle show sqlite3`
-    Dir.chdir koans_dir
-    assert_equal "sqlite3-1.", bundle_result[/sqlite3-1./]
+    in_external_dir("../firstapp") do
+      assert_equal "sqlite3-1.", `bundle show sqlite3`[/sqlite3-1./]
+    end
   end
   
 end
