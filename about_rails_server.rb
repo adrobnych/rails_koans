@@ -2,21 +2,43 @@
 # -*- ruby -*-
 
 require File.expand_path(File.dirname(__FILE__) + '/edgecase')
+require 'open-uri'
 
 class AboutRailsServer < EdgeCase::Koan
 
-  # execute "rails s" 
+  # you have to execute "rails s" inside firstapp directory
   
-  # check default rails page
+  # check if server name is webrick
+  def test_server_name
+    open 'http://localhost:3000' do |f|
+      assert_equal "WEBrick", f.meta["server"][/WEBrick/]
+    end  
+  end
   
-  # check is everything OK with db connection
+  # landing page of firstapp includes text "You’re riding Ruby on Rails!"
+  def test_lnding_page
+    open 'http://localhost:3000' do |f|
+      was_found = false
+      f.each do |line|
+        if line.include? "You&rsquo;re riding Ruby on Rails!"
+          was_found = true
+        end
+      end
+      assert was_found
+    end  
+  end
   
-  # add another static page
-  def test_another_static_page
-    # assert_equals( get_content_of_page page, "this is another static page" 
-    # hint: create page.html file in public directory
-    # and feed it with the following text: "this is another static page"
+  # check if environment is production
+  def test_lnding_page
+    open 'http://localhost:3000/rails/info/properties' do |f|
+      was_found = false
+      f.each do |line|
+        if line.include? '<tr><td class="name">Environment</td><td class="value">development</td></tr>'
+          was_found = true
+        end
+      end
+      assert was_found
+    end  
   end
 
- 
 end
