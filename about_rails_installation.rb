@@ -23,28 +23,28 @@ class AboutRailsInstallation < EdgeCase::Koan
   end
   
   # rubygems should be installed
-  def test_rubygems_presense
-    assert_equal "1.7.2", `gem --version`[/\d+.\d+.\d+/]          
+  def test_rubygems_presence
+    assert_equal "1.5.2", `gem --version`[/\d+.\d+.\d+/]          
   end
   
   # git should be installed
   def test_git_presense
-    assert_equal "1.7.6", `git --version`[/\d+.\d+.\d+/]          
+    assert_equal "1.7.3", `git --version`[/\d+.\d+.\d+/]          
   end
   
   # sqlite should be installed
   def test_sqlite_presense
-    assert_equal "3.7.3", `sqlite3 --version`[/\d+.\d+.\d+/]          
+    assert_equal "3.7.4", `sqlite3 --version`[/\d+.\d+.\d+/]          
   end
   
   # bundler should be installed
   def test_bundler_presense
-    assert_equal "1.0.21", `bundle --version`[/\d+.\d+.\d+/]          
+    assert_equal "1.0.18", `bundle --version`[/\d+.\d+.\d+/]          
   end
   
   # rails should be installed
   def test_rails_presense
-    assert_equal "3.1.1", `rails --version`[/\d+.\d+.\d+/]          
+    assert_equal "3.0.9", `rails --version`[/\d+.\d+.\d+/]          
   end
   
   # we'll use rails 3 for the following tests
