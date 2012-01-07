@@ -15,7 +15,7 @@ class AboutCeationRailsApp < EdgeCase::Koan
   # check rails root directory layout
   def test_standard_entries_of_rails_root
     rails_app_directory = Dir.open "../firstapp"
-    assert_equal [".",   "..",   ".gitignore",   "app",   "config",
+    assert_equal [".",   "..", ".git",  ".gitignore",   "app",   "config",
                   "config.ru",   "db",   "doc",   "Gemfile",   "Gemfile.lock",
                   "lib",   "log",   "public",   "Rakefile",   "README",
                   "script",   "test",   "tmp",   "vendor"], rails_app_directory.entries
@@ -24,7 +24,7 @@ class AboutCeationRailsApp < EdgeCase::Koan
   # check rails root subdirectories
   def test_rails_subdirectories
     rails_app_directory = Dir.open("../firstapp")
-    assert_equal  [".",   "..",   "app",   "config",   "db",   "doc",   "lib",
+    assert_equal  [".",   "..", ".git",  "app",   "config",   "db",   "doc",   "lib",
                    "log",   "public",   "script",   "test",   "tmp",   "vendor"],
                 rails_app_directory.entries.select {|e| File.directory? "../firstapp/#{e}"}
   end
